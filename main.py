@@ -26,6 +26,21 @@ def main():
     loopcount = 0
     while True:
         loopcount += 1
+
+        # Get Cursor
+        cur = conn.cursor()
+
+        try: 
+            cur.execute(
+                "INSERT INTO sensors (uuid, timestamp, temperature, relative_humidity) VALUES (?, ?, ?, ?)", 
+                (config["UUID"], time.time(), sensor.readTemperature(), sensor.readRelativeHumidity()))
+
+            conn.commit()
+        except mariadb.Error as e:
+            print(f"Error: {e}")
+        
+        time.sleep(2)
+
         # every 10 passes turn on the heater for 1 second
         if loopcount == 10:
             loopcount = 0
