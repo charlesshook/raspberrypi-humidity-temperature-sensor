@@ -26,5 +26,15 @@ Ensure the Raspberry Pi is up to date by running:
   ```
 
 ### Installation
+On the home directory of your Raspberry Pi run:
+  ```sh
+  git clone https://github.com/charlesshook/raspberrypi-humidity-temperature-sensor.git
+  ```
+
+Then you are going to need to edit the config file in the /data folder. To generate a UUID you can go to: https://www.uuidgenerator.net/
 
 ## Usage
+Inside the project folder on the Raspberry Pi run:
+  ```sh
+  sudo python3 main.py
+  ```
