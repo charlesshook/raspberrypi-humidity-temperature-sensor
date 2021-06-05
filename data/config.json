@@ -1,0 +1,9 @@
+{
+    "marinadb": {
+        "user": "",
+        "password": "",
+        "host": "",
+        "port": "",
+        "database": ""
+    }
+}
