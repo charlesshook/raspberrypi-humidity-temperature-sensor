@@ -1,5 +1,5 @@
 {
-    "marinadb": {
+    "mariadb": {
         "user": "",
         "password": "",
         "host": "",
