@@ -41,5 +41,5 @@ Then you are going to need to edit the config file in the /data folder. To gener
 ## Usage
 Inside the project folder on the Raspberry Pi run:
   ```sh
-  sudo python3 main.py
+  python3 main.py
   ```
