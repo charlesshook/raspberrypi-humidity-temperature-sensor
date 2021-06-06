@@ -1,4 +1,4 @@
-# raspberrypi-humidity-temperature-sensor
+# Raspberry Pi Humidity Temperature Sensor
 
 ## About The Project
 
@@ -9,9 +9,12 @@ This project uses the SHT-31 from Adafruit connected to a raspberry pi 3 to reco
 ### Equipment
 * SHT-31 https://www.adafruit.com/product/4099
 * Raspberry Pi 3 https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
+* Jumper Cables https://www.adafruit.com/product/824
 
 ### Prerequisites
-Before you get started you need to run these commands on the Raspberry Pi.
+You will need to solder jumper cables to the SHT-31 in order to connect it to the GPIO pins on the Raspberry Pi. Plenty of videos can be found on how to solder. Ensure to match the cables colors so its easier to see what is going on. 
+
+On the Raspberry Pi you will need to do the following:
 
 Ensure the Raspberry Pi is up to date by running:
   ```sh
@@ -26,6 +29,8 @@ Ensure the Raspberry Pi is up to date by running:
   ```
 
 ### Installation
+First we need to connect the SHT-31 to the GPIO pins on the Raspberry Pi. Connect the VIN (red wire) to 3V3 on the Raspberry Pi. Connect the GND to GNG (black wire) on the Raspberry Pi. Connect the SCL to SCL (yellow wire) on the Raspberry Pi. Connect the SDA (blue wire) to SDA on Raspberry Pi.
+
 On the home directory of your Raspberry Pi run:
   ```sh
   git clone https://github.com/charlesshook/raspberrypi-humidity-temperature-sensor.git
