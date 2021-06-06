@@ -1,0 +1,10 @@
+{
+    "UUID": "",
+    "mariadb": {
+        "user": "",
+        "password": "",
+        "host": "",
+        "port": "",
+        "database": ""
+    }
+}
