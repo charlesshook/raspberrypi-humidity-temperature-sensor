@@ -5,8 +5,11 @@ import sys
 import json
 import sht31
 import time
+from datetime import datetime
 
 def main():
+    sensor = sht31.SHT31()
+
     with open("./data/config.json") as jf:
         config = json.load(jf)
     
@@ -22,18 +25,35 @@ def main():
         print(f"Error connecting to MariaDB Platform: {e}")
         sys.exit(1)
 
-    sensor = sht31.SHT31()
+    # Get Cursor
+    cur = conn.cursor()
+
+    # Create the table if it doesn't exist in the database
+    try:
+        query = """CREATE TABLE IF NOT EXISTS sensors (
+                uuid CHAR(100) NOT NULL,
+                timestamp TIMESTAMP NOT NULL,
+                temperature FLOAT NOT NULL,
+                relative_humidity FLOAT NOT NULL,
+                PRIMARY KEY(uuid, timestamp))"""
+
+        cur.execute(query)
+        conn.commit()
+    except mariadb.Error as e:
+        print(f"Error creating table in Mariadb: {e}")
+        sys.exit(1)
+
+
     loopcount = 0
     while True:
         loopcount += 1
 
-        # Get Cursor
-        cur = conn.cursor()
-
+        # Send data to database every two seconds
         try: 
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             cur.execute(
                 "INSERT INTO sensors (uuid, timestamp, temperature, relative_humidity) VALUES (?, ?, ?, ?)", 
-                (config["UUID"], time.time(), sensor.readTemperature(), sensor.readRelativeHumidity()))
+                (config["UUID"], timestamp, sensor.readTemperature(), sensor.readRelativeHumidity()))
 
             conn.commit()
         except mariadb.Error as e:

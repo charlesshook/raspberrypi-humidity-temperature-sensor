@@ -20,4 +20,3 @@ class SHT31:
         self.sensor.heater = True
         time.sleep(seconds)
         self.sensor.heater = False 
-        
