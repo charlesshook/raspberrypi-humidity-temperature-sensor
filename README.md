@@ -36,7 +36,7 @@ On the home directory of your Raspberry Pi run:
   git clone https://github.com/charlesshook/raspberrypi-humidity-temperature-sensor.git
   ```
 
-Then you are going to need to edit the config file in the /data folder. To generate a UUID you can go to: https://www.uuidgenerator.net/
+Then you are going to need to edit the config file in the /data folder. Enter in your Mariadb information. To generate a UUID you can go to: https://www.uuidgenerator.net/
 
 ## Usage
 Inside the project folder on the Raspberry Pi run:
